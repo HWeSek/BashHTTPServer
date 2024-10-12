@@ -1,4 +1,21 @@
-#!/bin/bash
-echo -e  'HTTP/1.1 200 OK\r\n' 
-echo $1;
+#!/bin/bash 
+case $1 in
+
+  '/')
+    echo `cat index.html`
+    ;;
+
+  '/home')
+    echo `cat home.html`
+    ;;
+
+  '/test')
+    echo `cat test.html`
+    ;;
+
+  *)
+   echo ni ma
+    ;;
+esac
+
 

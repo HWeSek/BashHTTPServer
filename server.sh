@@ -1,5 +1,7 @@
-
+#! /bin/bash
 while true
-do 	
-	./router.sh $DATA  | netcat -l -p 80 -q 0 > /dev/null  || break
+do	
+	ncat -l 80 --recv-only -o con.data -c echo
+        data=`cat con.data | cut -d ' ' -f 2 | head -n 1`
+	./router.sh $data | ncat -l -p 80 || break
 done
